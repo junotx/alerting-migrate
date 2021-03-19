@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ks-alerting-migration
+  namespace: kubesphere-system
+  labels:
+    app: ks-alerting-migration
+    job: ks-alerting-migration
+    version: v3.1.0
+spec:
+  backoffLimit: 6
+  completions: 1
+  parallelism: 1
+  template:
+    metadata:
+      labels:
+        app: ks-alerting-migration
+        job: ks-alerting-migration
+        version: v3.1.0
+      name: ks-alerting-migration
+    spec:
+      containers:
+        - image: kubespheredev:ks-alerting-migration
+          imagePullPolicy: IfNotPresent
+          name: ks-alerting-migration
+      serviceAccount: kubesphere
+      serviceAccountName: kubesphere

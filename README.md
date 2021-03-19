@@ -1,1 +1,1 @@
-# alerting-migrate
+# ks-alerting-migration
